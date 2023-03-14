@@ -57,7 +57,7 @@ export const deletePub= async(req,res)=>{
                 id,
             },
         })
-        res.sendStatus(204);   
+        res.send('Publicacion eliminada');   
     } catch (error) {
         return res.status(500).json({message:error.message});
     }
