@@ -1,12 +1,14 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/database.js';
 import {com} from '../models/comentarios.js';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export const pub=sequelize.define('Table-Pub',{
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement: true
+        type: DataTypes.UUID,
+        defaultValue: ()=> uuidv4(),
+        primaryKey:true
     },
     titulo:{
         type: DataTypes.STRING

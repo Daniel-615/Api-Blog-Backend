@@ -1,10 +1,11 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/database.js';
+import { v4 as uuidv4 } from 'uuid';
 export const com=sequelize.define('Table-com',{
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement: true
+        type: DataTypes.UUID,
+        defaultValue: ()=> uuidv4(),
+        primaryKey:true
     },
     contenido:{
         type: DataTypes.STRING
@@ -13,6 +14,6 @@ export const com=sequelize.define('Table-com',{
         type: DataTypes.STRING
     },
     publicacion_id:{
-        type: DataTypes.INTEGER
+        type: DataTypes.UUID
     }
 });

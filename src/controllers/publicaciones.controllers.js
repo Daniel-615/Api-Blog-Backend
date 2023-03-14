@@ -3,9 +3,7 @@ import {com} from '../models/comentarios.js';
 export const getPub=async (req,res)=>{
     try {
         const publications=await pub.findAll();
-        //console.log(publications);
         res.json(publications);
-        
     } catch (error) {
         return res.status(500).json({message:error.message})
     }
@@ -76,14 +74,14 @@ export const getPubCom= async(req,res)=>{
     }
 }
 export const postPubCom=async(req,res)=>{
-    const {id}=req.params;
-    const {contenido,autor,publicacion_id}=req.body;
+    const {publicacion_id}=req.params;
+    const {contenido,autor}=req.body;
     try {
         const newPubCom= await com.create({
-            where: {publicacion_id:id},
+            where: {publicacion_id:publicacion_id},
             contenido,
             autor,
-            publicacion_id 
+            publicacion_id
         })
         res.json(newPubCom);       
     } catch (error) {

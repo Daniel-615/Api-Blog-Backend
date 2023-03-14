@@ -50,7 +50,7 @@ export const deletecoment=async(req,res)=>{
        const result=await com.destroy({
             where: {id},
         })
-        return res.sendStatus(200) 
+        return res.json(result); 
     } catch (error) {
         return res.status(500).json({message:error.message})   
     }  
